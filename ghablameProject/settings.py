@@ -27,6 +27,7 @@ SECRET_KEY = 'django-insecure-1g!6zs-70c)&8m_3l5=h&3@=*#6xw7m7g@8e^+r_g7v1j72!)s
 DEBUG = True
 
 ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['ghablame.pythonanywhere.com']
 
 SETTINGS_PATH = os.path.dirname(os.path.dirname(__file__))
 
@@ -84,7 +85,18 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'ghablame$default',
+#         'USER': 'ghablame',
+#         'PASSWORD': 'Qw12er34ty56',
+#         'HOST': 'ghablame.mysql.pythonanywhere-services.com',
+#         'OPTIONS': {
+#             'sql_mode': 'traditional',
+#         }
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -127,6 +139,8 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'authtemplate/build/static')
 ]
+
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
