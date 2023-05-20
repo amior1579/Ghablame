@@ -12,8 +12,22 @@ def index(request):
 @csrf_exempt
 def usersApi(request):
     users = Users.objects.all()
+
     if request.method == 'GET':
         serializer = UsersSerializer(users, many=True)
         return JsonResponse(serializer.data, safe=False)
+    
+    if request.method == 'POST':
+        data = JSONParser().parse(request)
+        username = data['username']
+        password = data['password']
+
+        add_user = Users(
+            username = username,
+            password = password,
+        )
+        add_user.save()
+        return HttpResponse(status=204) 
+    
     else:
         return JsonResponse({"error": "GET or PUT request required."}, status=400)
